@@ -24,7 +24,11 @@ const expenseSlice = createSlice({
     addTransaction: (state, action: PayloadAction<Transaction>) => {
       state.transactions.push(action.payload);
     },
-    deleteTransaction: (state, action: PayloadAction<string>) => {},
+    deleteTransaction: (state, action: PayloadAction<string>) => {
+      state.transactions = state.transactions.filter(
+        (transaction) => transaction.id !== action.payload
+      );
+    },
   },
 });
 
