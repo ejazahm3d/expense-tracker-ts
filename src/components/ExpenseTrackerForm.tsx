@@ -1,20 +1,27 @@
-import React, { useContext } from "react";
-import { AppCtx } from "../context/GlobalState";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { v4 } from "uuid";
+import { useAppDispatch, addTransaction } from "../store";
+import { TransactionType, Transaction } from "../model/Transaction";
 
-const ExpenseTracker = (props) => {
-  const { register, errors, handleSubmit, reset } = useForm();
-  const { addTransaction } = useContext(AppCtx);
-  const handleSubmitForm = (data) => {
+type Inputs = {
+  name: string;
+  amount: string;
+  transactionType: TransactionType;
+};
+const ExpenseTracker: React.FC = () => {
+  const { register, errors, handleSubmit, reset } = useForm<Inputs>();
+  const dispatch = useAppDispatch();
+
+  const handleSubmitForm = (data: Inputs) => {
     const amount = data.transactionType === "exp" ? -data.amount : +data.amount;
-    const transaction = {
+    const transaction: Transaction = {
       id: v4(),
       name: data.name,
       amount,
       transactionType: data.transactionType,
     };
-    addTransaction(transaction);
+    dispatch(addTransaction(transaction));
     reset();
   };
 

@@ -1,8 +1,13 @@
-import React, { useContext } from "react";
-import { AppCtx } from "../context/GlobalState";
+import React from "react";
+import { Transaction } from "../model/Transaction";
+import { deleteTransaction, useAppDispatch } from "../store";
 
-const TransactionList = ({ transactions }) => {
-  const { deleteTransaction } = useContext(AppCtx);
+interface Props {
+  transactions: Transaction[];
+}
+
+const TransactionList: React.FC<Props> = ({ transactions }) => {
+  const dispatch = useAppDispatch();
   return (
     <div>
       {transactions.map((transaction) => (
@@ -24,7 +29,7 @@ const TransactionList = ({ transactions }) => {
             <div className="column is-one-third-mobile is-one-third-tablet">
               <button
                 className="button is-danger"
-                onClick={() => deleteTransaction(transaction.id)}
+                onClick={() => dispatch(deleteTransaction(transaction.id))}
               >
                 DELETE
               </button>

@@ -1,4 +1,9 @@
-import { createSlice, combineReducers, configureStore } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  combineReducers,
+  configureStore,
+  PayloadAction,
+} from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import { Transaction } from "../model/Transaction";
 
@@ -13,11 +18,13 @@ const initialState: ExpenseStore = {
 };
 
 const expenseSlice = createSlice({
-  name: "Expense",
+  name: "expense",
   initialState,
   reducers: {
-    addTransaction: (state, action) => {},
-    deleteTransaction: (state, action) => {},
+    addTransaction: (state, action: PayloadAction<Transaction>) => {
+      state.transactions.push(action.payload);
+    },
+    deleteTransaction: (state, action: PayloadAction<string>) => {},
   },
 });
 
@@ -28,6 +35,8 @@ const rootReducer = combineReducers({
 const store = configureStore({
   reducer: rootReducer,
 });
+
+export const { addTransaction, deleteTransaction } = expenseSlice.actions;
 
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppDispatch = typeof store.dispatch;

@@ -3,13 +3,14 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { GlobalProvider } from "./context/GlobalState";
+import { Provider as ReduxProvider } from "react-redux";
+import store from "./store";
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalProvider>
+    <ReduxProvider store={store}>
       <App />
-    </GlobalProvider>
+    </ReduxProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

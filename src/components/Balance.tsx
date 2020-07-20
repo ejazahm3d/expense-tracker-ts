@@ -1,9 +1,12 @@
-import React, { useContext } from "react";
-import { AppCtx } from "../context/GlobalState";
+import React from "react";
 import TransactionList from "./TransactionList";
+import { useSelector } from "react-redux";
+import { RootState, ExpenseStore } from "../store";
 
 const Balance = () => {
-  const { transactions } = useContext(AppCtx);
+  const { transactions } = useSelector<RootState, ExpenseStore>(
+    (state) => state.expense
+  );
 
   const totalBalance = () => {
     return transactions.reduce((acc, curr) => {

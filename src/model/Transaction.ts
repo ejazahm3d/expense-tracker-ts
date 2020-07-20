@@ -1,12 +1,10 @@
-import { v4 } from "uuid/interfaces";
-
 export enum TransactionType {
   Expense = "exp",
   Income = "inc",
 }
 
 export interface Transaction {
-  id: v4;
+  id: string;
   name: string;
   amount: number;
   transactionType: TransactionType;
