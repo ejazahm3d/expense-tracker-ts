@@ -29,7 +29,9 @@ const ExpenseTracker: React.FC = () => {
     <div className="box">
       <form onSubmit={handleSubmit(handleSubmitForm)}>
         <div className="field">
-          <label className="label">Name</label>
+          <label className="label" htmlFor="name">
+            Name
+          </label>
 
           <div className="control">
             <input
@@ -49,7 +51,9 @@ const ExpenseTracker: React.FC = () => {
           {errors.name && <p className="help is-danger">Name is required</p>}
         </div>
         <div className="field">
-          <label className="label">Transaction Type</label>
+          <label className="label" htmlFor="transactionType">
+            Transaction Type
+          </label>
           <div className="control">
             <div className="select">
               <select name="transactionType" ref={register}>

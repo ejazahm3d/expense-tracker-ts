@@ -6,6 +6,5 @@ describe("<Layout />", () => {
   it("Has app name", () => {
     render(<Layout />);
     expect(screen.getByText("Expense Tracker")).toBeInTheDocument();
-    screen.debug();
   });
 });

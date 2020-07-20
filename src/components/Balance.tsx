@@ -32,13 +32,13 @@ const Balance = () => {
     <>
       <div className="box">
         <div className="columns is-vcentered has-text-white">
-          <div className="column has-background-success">
+          <div className="column has-background-success" data-testid="income">
             Income: {totalIncome()}
           </div>
-          <div className="column has-background-danger">
+          <div className="column has-background-danger" data-testid="expense">
             Expenses: {Math.abs(totalExpenses())}
           </div>
-          <div className="column has-background-primary">
+          <div className="column has-background-primary" data-testid="total">
             Total: {totalBalance()}
           </div>
         </div>

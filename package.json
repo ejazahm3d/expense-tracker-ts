@@ -12,6 +12,7 @@
     "@types/react": "^16.9.36",
     "@types/react-dom": "^16.9.8",
     "bulma": "^0.9.0",
+    "mutationobserver-shim": "^0.3.7",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
